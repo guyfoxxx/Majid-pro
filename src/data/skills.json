@@ -1,0 +1,51 @@
+[
+  {
+    "category": "فرانت‌اند",
+    "items": [
+      { "name": "React", "level": "پیشرفته", "description": "ساخت رابط‌های کاربری تعاملی و کامپوننت‌محور." },
+      { "name": "Next.js", "level": "پیشرفته", "description": "فریم‌ورک اصلی برای پروژه‌های تولیدی و سئو-محور." },
+      { "name": "TypeScript", "level": "پیشرفته", "description": "تایپ‌گذاری قوی برای کدهای پایدار و مقیاس‌پذیر." },
+      { "name": "JavaScript", "level": "پیشرفته", "description": "پایه توسعه وب مدرن." },
+      { "name": "Tailwind CSS", "level": "پیشرفته", "description": "طراحی سریع و منظم رابط کاربری." }
+    ]
+  },
+  {
+    "category": "بک‌اند",
+    "items": [
+      { "name": "Node.js", "level": "متوسط", "description": "توسعه سرویس‌های سمت سرور." },
+      { "name": "Python", "level": "پیشرفته", "description": "توسعه بک‌اند، اسکریپت‌نویسی و اتوماسیون." },
+      { "name": "FastAPI", "level": "متوسط", "description": "ساخت API های سریع و مستندسازی‌شده." }
+    ]
+  },
+  {
+    "category": "موبایل",
+    "items": [
+      { "name": "Android", "level": "پیشرفته", "description": "توسعه اپلیکیشن‌های بومی اندروید." },
+      { "name": "Java", "level": "پیشرفته", "description": "زبان اصلی توسعه اندروید." }
+    ]
+  },
+  {
+    "category": "DevOps",
+    "items": [
+      { "name": "Linux", "level": "پیشرفته", "description": "مدیریت و پیکربندی سرورهای لینوکسی." },
+      { "name": "Docker", "level": "متوسط", "description": "کانتینری‌سازی و استقرار سرویس‌ها." },
+      { "name": "Cloudflare", "level": "پیشرفته", "description": "امنیت، CDN و مدیریت DNS." },
+      { "name": "Git", "level": "پیشرفته", "description": "کنترل نسخه و همکاری تیمی." }
+    ]
+  },
+  {
+    "category": "سئو",
+    "items": [
+      { "name": "سئوی فنی", "level": "پیشرفته", "description": "بهینه‌سازی ساختار فنی سایت برای موتورهای جست‌وجو." },
+      { "name": "بهینه‌سازی عملکرد", "level": "پیشرفته", "description": "افزایش سرعت و امتیاز Core Web Vitals." },
+      { "name": "معماری جست‌وجو", "level": "متوسط", "description": "طراحی ساختار اطلاعاتی سایت برای دیده‌شدن بهتر." }
+    ]
+  },
+  {
+    "category": "شبکه",
+    "items": [
+      { "name": "مدیریت شبکه", "level": "متوسط", "description": "پیکربندی و نگهداری زیرساخت شبکه." },
+      { "name": "مدیریت سرور", "level": "پیشرفته", "description": "راه‌اندازی و نگهداری سرورهای تولیدی." }
+    ]
+  }
+]
