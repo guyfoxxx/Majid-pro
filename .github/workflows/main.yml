@@ -1,0 +1,71 @@
+name: Build Static Site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: چک‌اوت کد
+        uses: actions/checkout@v4
+
+      - name: نصب Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: نصب پکیج‌ها
+        run: npm ci
+
+      - name: بررسی لینت
+        run: npm run lint
+
+      - name: بیلد و خروجی استاتیک (next.config.js -> output: "export")
+        run: npm run build
+
+      # پوشه /out را به‌عنوان artifact قابل دانلود در تب Actions قرار می‌دهد
+      # از اینجا می‌توانید محتوای آن را دستی روی InfinityFree آپلود کنید
+      - name: آپلود پوشه out به‌عنوان artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-site-out
+          path: out
+          retention-days: 14
+
+      # فقط برای انتشار روی GitHub Pages لازم است؛ اگر هدف شما InfinityFree
+      # یا هاست دیگری است، این بخش و job پایین را حذف کنید
+      - name: آماده‌سازی artifact مخصوص GitHub Pages
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy-pages:
+    # این job فقط زمانی اجرا می‌شود که بخواهید روی GitHub Pages منتشر کنید.
+    # اگر فقط InfinityFree/Netlify/Cloudflare Pages مدنظرتان است، کل این job را حذف کنید.
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: انتشار روی GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        
